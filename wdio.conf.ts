@@ -21,7 +21,7 @@ export const config: WebdriverIO.Config = {
     // will be called from there.
     //
     specs: [
-        './test/specs/**/*.ts'
+        './specs/**/*.ts'
     ],
     // Patterns to exclude.
     exclude: [
@@ -94,7 +94,7 @@ export const config: WebdriverIO.Config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'http://localhost',
+    baseUrl: 'http://15.222.240.93/',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -110,7 +110,7 @@ export const config: WebdriverIO.Config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['sauce','selenium-standalone'],
+    services: ['selenium-standalone'],
     
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -141,6 +141,9 @@ export const config: WebdriverIO.Config = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
+        compilers: [
+            'tsconfig-paths/register'
+        ],
         timeout: 60000
     },
     //
@@ -186,8 +189,9 @@ export const config: WebdriverIO.Config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {Object}         browser      instance of created browser/device session
      */
-    // before: function (capabilities, specs) {
-    // },
+     before: function () {
+        require('ts-node').register({ files: true });
+      },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name

@@ -1,11 +1,11 @@
 import { ChainablePromiseElement } from 'webdriverio';
 
-import Page from './page';
+import BasePage from './BasePage';
 
 /**
  * sub page containing specific selectors and methods for a specific page
  */
-class LoginPage extends Page {
+class LoginPage extends BasePage {
     /**
      * define selectors using getter methods
      */
