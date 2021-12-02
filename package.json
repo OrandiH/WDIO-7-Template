@@ -1,5 +1,5 @@
 {
-    "name": "webdriverio-tests",
+    "name": "mgh-automated-tests-with-webdriverio",
     "version": "0.1.0",
     "private": true,
     "devDependencies": {
